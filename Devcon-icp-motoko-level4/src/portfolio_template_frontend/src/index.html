@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David E. Bato-bato Portfolio</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #f8f9fa;
+            --accent-color: #1abc9c;
+            --bg-dark: #2c3e50;
+            --bg-light: #34495e;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-light));
+            color: var(--text-color);
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* Header Section */
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #f1f1f1;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.7),
+                        0 0 40px rgba(52, 152, 219, 0.4);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(52, 152, 219, 0.8),
+                        0 0 50px rgba(52, 152, 219, 0.5);
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0 0 10px 0;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin: 0 0 15px 0;
+            color: var(--primary-color);
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            margin-right: 20px;
+        }
+
+        .contact-item i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+
+        /* Section Styling */
+        section {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: rgba(52, 152, 219, 0.2);
+            border: 1px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .timeline-head {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 0;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .timeline-date {
+            color: #ccc;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .timeline-content {
+            margin-top: 10px;
+        }
+
+        .timeline-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .timeline-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+            color: var(--primary-color);
+        }
+
+        .project-tech {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        /* Education Section */
+        .education-item {
+            margin-bottom: 25px;
+        }
+
+        .education-item h3 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .education-item p {
+            margin: 5px 0;
+        }
+
+        .achievements {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .achievements li {
+            margin-bottom: 8px;
+        }
+
+        /* Links */
+        .links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Animation Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.07;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            animation: move 15s linear infinite;
+        }
+
+        .chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-color);
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background-color: var(--bg-light);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .chat-header {
+            background-color: var(--primary-color);
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .chat-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            word-break: break-word;
+        }
+
+        .user {
+            align-self: flex-end;
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot {
+            align-self: flex-start;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-bottom-left-radius: 5px;
+        }
+
+        .message-content {
+            line-height: 1.4;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .chat-input input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .chat-input button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .typing-indicator {
+            display: flex;
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-bottom-left-radius: 5px;
+            max-width: 80px;
+            align-self: flex-start;
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+            margin-right: 0;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-container {
+                width: 100%;
+                height: 90%;
+                bottom: 0;
+                right: 0;
+                border-radius: 0;
+            }
+
+            .chat-button {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation" id="stars"></div>
+
+    <div class="container">
+        <header>
+            <div class="profile-pic">
+                <img src="images/profile-pic.jpg" alt="David E. Bato-bato">
+            </div>
+            <div class="header-text">
+                <h1>David E. Bato-bato</h1>
+                <p class="subtitle">Software Developer & Full-Stack Engineer</p>
+                <p>A motivated and self-taught developer with 2 years of practical experience in Software Development, eager to apply and enhance skills while making meaningful contributions to communities. Skilled in connecting programming with tangible real-world outcomes.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i> (+63) 9944345742
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> batobatodavid20@gmail.com
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Technical Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">C++</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">NextJS</span>
+                        <span class="skill-tag">Vite</span>
+                        <span class="skill-tag">Tailwind</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Node</span>
+                        <span class="skill-tag">Express</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">React Native</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Databases & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Supabase</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Google Cloud</span>
+                        <span class="skill-tag">Pytorch</span>
+                        <span class="skill-tag">Socket.IO</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="job-title">Software Developer</h3>
+                            <p class="company">ElectrifAI - Manila, National Capital Region</p>
+                        </div>
+                        <span class="timeline-date">October 2024 – Present</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Developed a comprehensive web and mobile application aimed at monitoring household electricity consumption in real-time using React, TypeScript, and React Native.</li>
+                            <li>Connected the app with an IoT device powered by ESP32, which collects kWh data from household electrical systems and updates real-time consumption data in the Supabase database.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="job-title">Software Development Co-Lead</h3>
+                            <p class="company">Google Developer Students Club, Polytechnic University of the Philippines</p>
+                        </div>
+                        <span class="timeline-date">September 2024 – Present</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Led the web department in implementing web technologies, including the organization's primary website and backend, to automate tasks and improve efficiency.</li>
+                            <li>Mentored and guided 300+ students in software development by facilitating discussions, sharing insights, and fostering collaboration.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="job-title">Full-Stack Developer</h3>
+                            <p class="company">PUP ICTO - Sta. Mesa, Manila</p>
+                        </div>
+                        <span class="timeline-date">August 2024 – February 2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Developed a fully custom-built PUP alumni portal web application, handling everything from initial planning to execution.</li>
+                            <li>Designed and built the backend infrastructure, ensuring the application's scalability and efficiency.</li>
+                            <li>Gained hands-on experience in PHP, Laravel, MySQL, and GoDaddy CI/CD Pipelines.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Notable Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Alertech Technologies</h3>
+                        <p class="project-tech">React Native CLI, React, Firebase, ESP32 with DHT22 & MQ-2 Sensors</p>
+                        <div class="project-description">
+                            <ul>
+                                <li>Developed an integrated fire detection and alert system combining a mobile app, web dashboard, and IoT device.</li>
+                                <li>Engineered IoT firmware on the ESP32 for real-time environmental monitoring.</li>
+                                <li>Implemented mobile alerts via Firebase Cloud Messaging.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">IskoChatAI</h3>
+                        <p class="project-tech">NextJS, TypeScript, Gemini API, Google Cloud, Supabase, Zustand</p>
+                        <div class="project-description">
+                            <ul>
+                                <li>Engineered a Filipino language chatbot using Retrieval-Augmented Generation (RAG).</li>
+                                <li>Integrated Gemini API with Google Custom Search and vector search for context-aware responses in both English and Filipino.</li>
+                                <li>Architected a scalable backend with Supabase for secure user profile management.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Chat Application with Sentiment Analysis</h3>
+                        <p class="project-tech">MongoDB, Express, React, Node.js, Socket.io, Firebase, Hugging Face</p>
+                        <div class="project-description">
+                            <ul>
+                                <li>Built a full-featured chat application with real-time messaging and user authentication.</li>
+                                <li>Integrated sentiment analysis using a pretrained transformer model from Hugging Face.</li>
+                                <li>Implemented WebSockets for real-time updates and emotion-based message styling.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">GDG XParky Points Backend</h3>
+                        <p class="project-tech">Python Flask, Google Cloud - Classroom, Sheets</p>
+                        <div class="project-description">
+                            <ul>
+                                <li>Developed a RESTful API to automate and manage student participation points.</li>
+                                <li>Integrated Google Classroom API for real-time class data access.</li>
+                                <li>Utilized Google Sheets as a dynamic database for instant data updates.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Polytechnic University of the Philippines - Sta. Mesa, Manila</h3>
+                <p><strong>Bachelor of Science in Computer Engineering</strong> | August 2023 - Present</p>
+                <ul class="achievements">
+                    <li>Consistent President Lister</li>
+                    <li>Awarded and currently holding Ched Merit Scholarship – HSSP</li>
+                    <li>Part of College of Engineering Student Council Special Projects and Academic Affairs A.Y. 2023-2024</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="job-title">AWS Cloud Practitioner Essentials</h3>
+                            <p class="company">AWS</p>
+                        </div>
+                        <span class="timeline-date">March 2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Fundamentals of AWS cloud computing, architecture, and services.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="job-title">Generative AI with Large Language Models</h3>
+                            <p class="company">DeepLearning.AI</p>
+                        </div>
+                        <span class="timeline-date">March 2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Practical knowledge of LLM development, optimization, fine-tuning, reinforcement learning and AI applications.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 class="job-title">Python Programmer Bootcamp</h3>
+                            <p class="company">365 Data Science</p>
+                        </div>
+                        <span class="timeline-date">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <p>Completed an in-depth Python bootcamp covering fundamental to advanced programming concepts, including NumPy, Pandas, and Matplotlib for data analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Links -->
+        <div class="links">
+            <a href="https://github.com/" class="social-link" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/" class="social-link" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:batobatodavid20@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <a href="#" class="social-link" target="_blank">
+                <i class="fas fa-globe"></i>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 David E. Bato-bato • Software Developer & Full-Stack Engineer</p>
+        </footer>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>Chat with David's AI Assistant</h3>
+            <button id="toggleChat"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-content">Hi there! I'm David's AI assistant. How can I help you today?</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chat-button" id="openChat">
+        <i class="fas fa-comment"></i>
+    </button>
+
+    <script>
+        // Create animated background stars
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.getElementById('stars');
+            const starsCount = 50;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('span');
+                const size = Math.random() * 4 + 1;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 10;
+                
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${delay}s`;
+                
+                stars.appendChild(star);
+            }
+        });
+
+        // Chat functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Portfolio data condensed for the chatbot to use
+            const portfolioData = {
+                name: "David E. Bato-bato",
+                title: "Software Developer & Full-Stack Engineer",
+                contact: {
+                    phone: "(+63) 9944345742",
+                    email: "batobatodavid20@gmail.com"
+                },
+                skills: {
+                    languages: ["HTML", "CSS", "JavaScript", "TypeScript", "Python", "PHP", "C++"],
+                    frameworks: ["React", "NextJS", "Vite", "Tailwind", "Bootstrap", "Node", "Express", "Flask", "Laravel", "React Native"],
+                    databases: ["Firebase", "MySQL", "MongoDB", "Supabase", "SQLite", "Git", "Docker", "Google Cloud", "Pytorch", "Socket.IO"]
+                },
+                experience: [
+                    {
+                        title: "Software Developer",
+                        company: "ElectrifAI - Manila",
+                        period: "October 2024 – Present",
+                        description: "Developed web/mobile app for monitoring electricity consumption with React, TypeScript, and React Native. Connected IoT devices with Supabase."
+                    },
+                    {
+                        title: "Software Development Co-Lead",
+                        company: "Google Developer Students Club, PUP",
+                        period: "September 2024 – Present",
+                        description: "Led web department and mentored 300+ students in software development."
+                    },
+                    {
+                        title: "Full-Stack Developer",
+                        company: "PUP ICTO - Sta. Mesa, Manila",
+                        period: "August 2024 – February 2025",
+                        description: "Built custom PUP alumni portal web application using PHP, Laravel, MySQL."
+                    }
+                ],
+                projects: [
+                    {
+                        name: "Alertech Technologies",
+                        tech: "React Native CLI, React, Firebase, ESP32 with DHT22 & MQ-2 Sensors",
+                        description: "Integrated fire detection system with mobile app, web dashboard, and IoT device."
+                    },
+                    {
+                        name: "IskoChatAI",
+                        tech: "NextJS, TypeScript, Gemini API, Google Cloud, Supabase, Zustand",
+                        description: "Filipino language chatbot using Retrieval-Augmented Generation (RAG)."
+                    },
+                    {
+                        name: "Chat Application with Sentiment Analysis",
+                        tech: "MongoDB, Express, React, Node.js, Socket.io, Firebase, Hugging Face",
+                        description: "Real-time chat app with sentiment analysis using transformers."
+                    },
+                    {
+                        name: "GDG XParky Points Backend",
+                        tech: "Python Flask, Google Cloud - Classroom, Sheets",
+                        description: "RESTful API for student participation points with Google integrations."
+                    }
+                ],
+                education: {
+                    institution: "Polytechnic University of the Philippines - Sta. Mesa, Manila",
+                    degree: "Bachelor of Science in Computer Engineering",
+                    period: "August 2023 - Present",
+                    achievements: ["Consistent President Lister", "Ched Merit Scholarship – HSSP", "College of Engineering Student Council"]
+                },
+                certifications: [
+                    {
+                        name: "AWS Cloud Practitioner Essentials",
+                        issuer: "AWS",
+                        date: "March 2025"
+                    },
+                    {
+                        name: "Generative AI with Large Language Models",
+                        issuer: "DeepLearning.AI",
+                        date: "March 2025"
+                    },
+                    {
+                        name: "Python Programmer Bootcamp",
+                        issuer: "365 Data Science",
+                        date: "2024"
+                    }
+                ]
+            };
+
+            // Setup chat elements
+            const chatButton = document.getElementById('openChat');
+            const chatContainer = document.getElementById('chatContainer');
+            const toggleChat = document.getElementById('toggleChat');
+            const chatMessages = document.getElementById('chatMessages');
+            const userInput = document.getElementById('userInput');
+            const sendMessage = document.getElementById('sendMessage');
+
+            // Gemini API key
+            const API_KEY = "AIzaSyAekuaSLFm6dJ47y2OgaykTYBBU2RHjCzc";
+            
+            // Chat toggle functionality
+            chatButton.addEventListener('click', () => {
+                chatContainer.style.display = 'flex';
+                chatButton.style.display = 'none';
+            });
+
+            toggleChat.addEventListener('click', () => {
+                chatContainer.style.display = 'none';
+                chatButton.style.display = 'flex';
+            });
+
+            // Send message on Enter key
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendUserMessage();
+                }
+            });
+
+            // Send message on button click
+            sendMessage.addEventListener('click', sendUserMessage);
+
+            // Function to send user message
+            function sendUserMessage() {
+                const message = userInput.value.trim();
+                if (message) {
+                    // Add user message to chat
+                    addMessage('user', message);
+                    userInput.value = '';
+                    
+                    // Show typing indicator
+                    showTypingIndicator();
+                    
+                    // Get response from Gemini API
+                    getBotResponse(message);
+                }
+            }
+
+            // Function to add a message to the chat
+            function addMessage(sender, content) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', sender);
+                
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                messageContent.textContent = content;
+                
+                messageDiv.appendChild(messageContent);
+                chatMessages.appendChild(messageDiv);
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Show typing indicator
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.classList.add('typing-indicator');
+                typingDiv.id = 'typingIndicator';
+                
+                for (let i = 0; i < 3; i++) {
+                    const dot = document.createElement('span');
+                    typingDiv.appendChild(dot);
+                }
+                
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Remove typing indicator
+            function removeTypingIndicator() {
+                const typingIndicator = document.getElementById('typingIndicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+
+            // Function to get response from Gemini API
+            async function getBotResponse(userMessage) {
+                try {
+                    // Create a condensed context for the API to save on token usage
+                    const context = `You are an AI assistant for David Bato-bato's portfolio website. 
+                    Be friendly, helpful, and concise in your responses (max 3 sentences when possible).
+                    Answer questions about David based on this data: ${JSON.stringify(portfolioData)}. 
+                    If asked about something not in the data, politely say you don't have that information.
+                    Never pretend to be David himself - always refer to him in the third person.
+                    Don't provide contact details unless explicitly asked.`;
+                    
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.0-pro:generateContent?key=${API_KEY}`;
+                    
+                    const data = {
+                        contents: [
+                            {
+                                parts: [
+                                    {
+                                        text: `${context}\n\nUser: ${userMessage}`
+                                    }
+                                ]
+                            }
+                        ],
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 300,
+                            topP: 0.8,
+                            topK: 40
+                        }
+                    };
+                    
+                    const response = await fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    // Remove typing indicator
+                    removeTypingIndicator();
+                    
+                    // Process the response
+                    if (result.candidates && result.candidates[0].content.parts[0].text) {
+                        const botMessage = result.candidates[0].content.parts[0].text.trim();
+                        addMessage('bot', botMessage);
+                    } else {
+                        addMessage('bot', "I'm having trouble connecting right now. Please try again later.");
+                        console.error("API Error:", result);
+                    }
+                    
+                } catch (error) {
+                    removeTypingIndicator();
+                    addMessage('bot', "I'm having trouble connecting right now. Please try again later.");
+                    console.error("Error with Gemini API:", error);
+                }
+            }
+
+            // Adding visitor count feature
+            // This will connect with your Motoko backend
+            try {
+                // Create a container for visitor count if it doesn't exist
+                if (!document.querySelector('.visitor-count')) {
+                    const visitorCountDiv = document.createElement('div');
+                    visitorCountDiv.className = 'visitor-count';
+                    visitorCountDiv.style.textAlign = 'center';
+                    visitorCountDiv.style.marginTop = '20px';
+                    
+                    const visitorText = document.createElement('p');
+                    visitorText.textContent = 'Loading visitor count...';
+                    visitorText.style.color = '#ccc';
+                    visitorText.style.fontSize = '0.9rem';
+                    
+                    visitorCountDiv.appendChild(visitorText);
+                    document.querySelector('footer').prepend(visitorCountDiv);
+                }
+                
+                // The Motoko backend integration will be handled by your provided code
+                // which runs on DOMContentLoaded
+            } catch (error) {
+                console.error("Error setting up visitor count:", error);
+            }
+        });
+    </script>
+
+</body>
+</html>
